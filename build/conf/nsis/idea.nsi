@@ -91,6 +91,9 @@ ReserveFile "UninstallOldVersions.ini"
 ;------------------------------------------------------------------------------
 
 !define MUI_CUSTOMFUNCTION_GUIINIT GUIInit
+!define MUI_LANGDLL_REGISTRY_ROOT "HKCU"
+!define MUI_LANGDLL_REGISTRY_KEY "Software\Edument\${MUI_PRODUCT}\${VER_BUILD}\"
+!define MUI_LANGDLL_REGISTRY_VALUENAME "Installer Language"
 !macro INST_UNINST_SWITCH un
   ;check if the window is win7 or newer
   Function ${un}winVersion
@@ -440,7 +443,7 @@ Page custom uninstallOldVersionDialog
 Page custom ConfirmDesktopShortcut
 !define MUI_PAGE_HEADER_TEXT "$(choose_start_menu_folder)"
 !define MUI_STARTMENUPAGE_NODISABLE
-!define MUI_STARTMENUPAGE_DEFAULTFOLDER "JetBrains"
+!define MUI_STARTMENUPAGE_DEFAULTFOLDER "Edument"
 
 !insertmacro MUI_PAGE_STARTMENU Application $STARTMENU_FOLDER
 !define MUI_ABORTWARNING
@@ -588,9 +591,9 @@ Function IncorrectSilentInstallParameters
   !define msg1 "How to run installation in silent mode:$\r$\n"
   !define msg2 "<installation> /S /CONFIG=<path to silent config with file name> /D=<install dir>$\r$\n$\r$\n"
   !define msg3 "Examples:$\r$\n"
-  !define msg4 "Installation.exe /S /CONFIG=d:\download\silent.config /D=d:\JetBrains\Product$\r$\n"
+  !define msg4 "Installation.exe /S /CONFIG=d:\download\silent.config /D=d:\Edument\Product$\r$\n"
   !define msg5 "Run installation in silent mode with logging:$\r$\n"
-  !define msg6 "Installation.exe /S /CONFIG=d:\download\silent.config /LOG=d:\JetBrains\install.log /D=d:\JetBrains\Product$\r$\n"
+  !define msg6 "Installation.exe /S /CONFIG=d:\download\silent.config /LOG=d:\Edument\install.log /D=d:\Edument\Product$\r$\n"
   MessageBox MB_OK|MB_ICONSTOP "${msg1}${msg2}${msg3}${msg4}${msg5}${msg6}"
   ${LogText} "ERROR: silent installation: incorrect parameters."
   Abort
@@ -1235,9 +1238,9 @@ skip_ipr:
   WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_WITH_VER}" \
               "DisplayVersion" "${VER_BUILD}"
   WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_WITH_VER}" \
-              "Publisher" "JetBrains s.r.o."
+              "Publisher" "Edument Central Europe s.r.o."
   WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_WITH_VER}" \
-              "URLInfoAbout" "https://www.jetbrains.com/products"
+              "URLInfoAbout" "https://www.commaide.com/"
   WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_WITH_VER}" \
               "InstallType" "$baseRegKey"
   WriteRegDWORD SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_WITH_VER}" \
