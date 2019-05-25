@@ -947,22 +947,9 @@ public class IdeErrorsDialog extends DialogWrapper implements MessagePoolListene
       return null;
     }
 
-    if (plugin != null) {
-      for (ErrorReportSubmitter reporter : reporters) {
-        PluginDescriptor descriptor = reporter.getPluginDescriptor();
-        if (descriptor != null && Objects.equals(plugin.getPluginId(), descriptor.getPluginId())) {
-          return reporter;
-        }
-      }
-    }
-
-    if (plugin == null || PluginManagerCore.isDevelopedByJetBrains(plugin)) {
-      for (ErrorReportSubmitter reporter : reporters) {
-        PluginDescriptor descriptor = reporter.getPluginDescriptor();
-        if (descriptor == null || PluginManagerCore.CORE_ID.equals(descriptor.getPluginId())) {
-          return reporter;
-        }
-      }
+    for (ErrorReportSubmitter reporter : reporters) {
+      if (reporter.getClass().getName().contains("Perl6ErrorReportSubmitter"))
+        return reporter;
     }
 
     return null;
