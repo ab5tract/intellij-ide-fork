@@ -55,6 +55,7 @@ public class LauncherGeneratorMain {
     if (splashUrl.startsWith("/")) {
       splashUrl = splashUrl.substring(1);
     }
+    splashUrl = splashUrl + ".windows";
     InputStream splashStream = LauncherGeneratorMain.class.getClassLoader().getResourceAsStream(splashUrl);
     if (splashStream == null) {
       System.err.println("Splash screen image file file " + splashUrl + " not found");
