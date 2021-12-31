@@ -51,7 +51,7 @@ public class _LastInSuiteTest extends TestCase {
   }
 
   public void testDynamicExtensions() {
-    boolean testDynamicExtensions = SystemProperties.getBooleanProperty("intellij.test.all.dynamic.extension.points", false);
+    boolean testDynamicExtensions = SystemProperties.getBooleanProperty("intellij.test.all.dynamic.extension.points", true);
     Assume.assumeTrue("intellij.test.all.dynamic.extension.points is off, no dynamic extensions to test", !DynamicExtensionPointsTester.EXTENSION_POINTS_WHITE_LIST.isEmpty() || testDynamicExtensions);
     DynamicExtensionPointsTester.checkDynamicExtensionPoints(_LastInSuiteTest::getTestName);
   }
