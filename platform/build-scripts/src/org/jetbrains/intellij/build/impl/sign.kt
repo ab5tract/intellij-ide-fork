@@ -69,7 +69,7 @@ internal fun signMacApp(
   publishAppArchive: Boolean,
   jetSignClient: Path
 ) {
-  executeTask(host, user, password, "intellij-builds/${fullBuildNumber}") { ssh, sftp, remoteDir ->
+  executeTask(host, user, password, "/Users/koto/ftp-uploads/intellij-builds/${fullBuildNumber}") { ssh, sftp, remoteDir ->
     spanBuilder("upload file")
       .setAttribute("file", appArchiveFile.toString())
       .setAttribute("remoteDir", remoteDir)

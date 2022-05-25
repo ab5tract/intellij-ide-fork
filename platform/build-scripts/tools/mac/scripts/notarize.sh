@@ -70,7 +70,7 @@ function altool-upload() {
   xcrun altool --notarize-app \
     --username "$APPLE_USERNAME" --password "$APPLE_PASSWORD" \
     --primary-bundle-id "$BUNDLE_ID" \
-    --asc-provider JetBrainssro --file "$1" 2>&1 | tee "altool.init.out"
+    --file "$1" 2>&1 | tee "altool.init.out"
   unset TMPDIR
   export HOME="$OLD_HOME"
   set -ex

@@ -106,10 +106,9 @@ if [ "$USERNAME" != "" ] && [ "$PASSWORD" != "" ]; then
 fi
 set -ex
 
-function notarize() {
   set +x
-  if [[ -f "$HOME/.notarize_token" ]]; then
-    source "$HOME/.notarize_token"
+  if [[ -f "/Users/koto/.notarize_token" ]]; then
+    source "/Users/koto/.notarize_token"
   fi
   if [[ -z "$APPLE_USERNAME" ]] || [[ -z "$APPLE_PASSWORD" ]]; then
     log "Apple credentials are required for Notarization"
