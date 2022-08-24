@@ -285,7 +285,7 @@ class BuildContextImpl private constructor(private val compilationContext: Compi
     if (classLoader != null) {
       jvmArgs.add("-Djava.system.class.loader=$classLoader")
     }
-    jvmArgs.add("-Didea.vendor.name=${applicationInfo.shortCompanyName}")
+    jvmArgs.add("-Didea.vendor.name=\"${applicationInfo.shortCompanyName}\"")
     jvmArgs.add("-Didea.paths.selector=$systemSelector")
     if (productProperties.platformPrefix != null) {
       jvmArgs.add("-Didea.platform.prefix=${productProperties.platformPrefix}")
@@ -330,8 +330,4 @@ private fun getSourceRootsWithPrefixes(module: JpsModule): Sequence<Pair<Path, S
       }
       Pair(Path.of(JpsPathUtil.urlToPath(moduleSourceRoot.url)), prefix.trimStart('/'))
     }
-}
-
-private fun readSnapshotBuildNumber(communityHome: BuildDependenciesCommunityRoot): String {
-  return Files.readString(communityHome.communityRoot.resolve("build.txt")).trim { it <= ' ' }
 }
