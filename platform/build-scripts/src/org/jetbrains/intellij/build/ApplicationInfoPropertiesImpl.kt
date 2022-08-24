@@ -62,7 +62,7 @@ class ApplicationInfoPropertiesImpl(
     minorVersion = versionTag.getAttributeValue("minor") ?: "0"
     microVersion = versionTag.getAttributeValue("micro") ?: "0"
     patchVersion = versionTag.getAttributeValue("patch") ?: "0"
-    fullVersionFormat = versionTag.getAttributeValue("full") ?: "{0}.{1}"
+    fullVersionFormat = versionTag.getAttributeValue("full") ?: "{0}.{1}.{2}"
     isEAP = versionTag.getAttributeValue("eap").toBoolean()
     versionSuffix = versionTag.getAttributeValue("suffix") ?: (if (isEAP) "EAP" else null)
     minorVersionMainPart = minorVersion.takeWhile { it != '.' }
