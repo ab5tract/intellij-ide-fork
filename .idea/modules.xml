@@ -370,6 +370,10 @@
       <module fileurl="file://$PROJECT_DIR$/android/android/prebuilts/sdktools/android.sdktools.wizardTemplate.impl.iml" filepath="$PROJECT_DIR$/android/android/prebuilts/sdktools/android.sdktools.wizardTemplate.impl.iml" />
       <module fileurl="file://$PROJECT_DIR$/android/android/prebuilts/sdktools/android.sdktools.wizardTemplate.plugin.iml" filepath="$PROJECT_DIR$/android/android/prebuilts/sdktools/android.sdktools.wizardTemplate.plugin.iml" />
       <module fileurl="file://$PROJECT_DIR$/android/android/prebuilts/sdktools/android.sdktools.zipflinger.iml" filepath="$PROJECT_DIR$/android/android/prebuilts/sdktools/android.sdktools.zipflinger.iml" />
+      <module fileurl="file://$PROJECT_DIR$/comma-build/build/edument.raku.comma.build.iml" filepath="$PROJECT_DIR$/comma-build/build/edument.raku.comma.build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/comma-build/community/edument.raku.comma.community.iml" filepath="$PROJECT_DIR$/comma-build/community/edument.raku.comma.community.iml" />
+      <module fileurl="file://$PROJECT_DIR$/comma-build/complete/edument.raku.comma.complete.iml" filepath="$PROJECT_DIR$/comma-build/complete/edument.raku.comma.complete.iml" />
+      <module fileurl="file://$PROJECT_DIR$/comma-build/raku-idea-plugin/edument.raku.plugin.iml" filepath="$PROJECT_DIR$/comma-build/raku-idea-plugin/edument.raku.plugin.iml" />
       <module fileurl="file://$PROJECT_DIR$/android/android-adb/intellij.android.adb.iml" filepath="$PROJECT_DIR$/android/android-adb/intellij.android.adb.iml" />
       <module fileurl="file://$PROJECT_DIR$/android/android-adb/intellij.android.adb.testUtil.iml" filepath="$PROJECT_DIR$/android/android-adb/intellij.android.adb.testUtil.iml" />
       <module fileurl="file://$PROJECT_DIR$/android/android-adb/intellij.android.adb.tests.iml" filepath="$PROJECT_DIR$/android/android-adb/intellij.android.adb.tests.iml" />
@@ -1354,6 +1358,7 @@
       <module fileurl="file://$PROJECT_DIR$/plugins/kotlin/util/test-generator-api/kotlin.util.test-generator-api.iml" filepath="$PROJECT_DIR$/plugins/kotlin/util/test-generator-api/kotlin.util.test-generator-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/plugins/kotlin/util/test-generator-fe10/kotlin.util.test-generator-fe10.iml" filepath="$PROJECT_DIR$/plugins/kotlin/util/test-generator-fe10/kotlin.util.test-generator-fe10.iml" />
       <module fileurl="file://$PROJECT_DIR$/plugins/kotlin/util/test-generator-fir/kotlin.util.test-generator-fir.iml" filepath="$PROJECT_DIR$/plugins/kotlin/util/test-generator-fir/kotlin.util.test-generator-fir.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tools/launcher-generator/launcher-generator.iml" filepath="$PROJECT_DIR$/tools/launcher-generator/launcher-generator.iml" />
     </modules>
   </component>
 </project>

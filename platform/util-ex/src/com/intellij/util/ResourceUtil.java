@@ -21,7 +21,7 @@ public final class ResourceUtil {
   }
 
   public static byte @Nullable [] getResourceAsBytes(@NotNull String path, @NotNull ClassLoader classLoader) throws IOException {
-    return getResourceAsBytes(path, classLoader, false);
+    return getResourceAsBytes(path, classLoader, true);
   }
 
   public static byte @Nullable [] getResourceAsBytes(@NotNull String path,

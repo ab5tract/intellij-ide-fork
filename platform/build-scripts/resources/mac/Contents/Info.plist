@@ -37,7 +37,7 @@
     <key>CFBundleIdentifier</key>
     <string>@@bundle_identifier@@@@product_state@@</string>
     <key>CFBundleGetInfoString</key>
-    <string>@@bundle_name@@ @@version@@, build @@build@@. Copyright JetBrains s.r.o., (c) 2000-@@year@@</string>
+    <string>@@bundle_name@@ @@version@@, build @@build@@. Copyright Edument Central Europe s.r.o., (c) 2017-@@year@@</string>
     <key>CFBundleShortVersionString</key>
     <string>@@version@@</string>
     <key>CFBundleVersion</key>

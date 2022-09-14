@@ -67,41 +67,6 @@ APPLICATION_PATH="$EXPLODED/$BUILD_NAME"
 function notarize() {
   set +x
   if [[ -f "$HOME/.notarize_token" ]]; then
-    if [ "$CODESIGN_STRING" == "" ]; then
-      echo "CertificateID is not specified, required for $HOME/.notarize_token"
-      exit 1
-    fi
-    source "$HOME/.notarize_token"
-  fi
-  if [[ -z "$APPLE_USERNAME" ]] || [[ -z "$APPLE_PASSWORD" ]]; then
-    log "Apple credentials are required for Notarization"
-    exit 1
-  fi
-  set -x
-  # Since notarization tool uses same file for upload token we have to trick it into using different folders, hence fake root
-  # Also it leaves copy of zip file in TMPDIR, so notarize.sh overrides it and uses FAKE_ROOT as location for temp TMPDIR
-  FAKE_ROOT="$(pwd)/fake-root"
-  mkdir -p "$FAKE_ROOT"
-  echo "Notarization will use fake root: $FAKE_ROOT"
-  APP_NAME="${SIT_FILE%.*}"
-  set +x
-  retry "Notarization" 3 ./notarize.sh "$APPLICATION_PATH" "$APPLE_USERNAME" "$APPLE_PASSWORD" "$APP_NAME" "$BUNDLE_ID" "$FAKE_ROOT"
-  set -x
-  rm -rf "$FAKE_ROOT"
-}
-
-if [ "$NOTARIZE" = "yes" ]; then
-  log "Notarizing..."
-  notarize
-else
-  log "Notarization disabled"
-fi
-
-if [ "$STAPLE" = "yes" ]; then
-  log "Stapling..."
-  # only unzipped application can be stapled
-  retry "Stapling" 3 xcrun stapler staple "$APPLICATION_PATH"
-else
   log "Stapling disabled"
 fi
 

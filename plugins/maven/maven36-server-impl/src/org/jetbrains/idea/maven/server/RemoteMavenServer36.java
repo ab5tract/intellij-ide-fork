@@ -18,6 +18,7 @@ package org.jetbrains.idea.maven.server;
 public class RemoteMavenServer36 extends RemoteMavenServerBase {
   public static void main(String[] args) throws Exception {
     MavenServerUtil.readToken();
-    startMavenServer(new Maven36ServerImpl(), args);
+    // COMMA-SPECIFIC
+    //    startMavenServer(new Maven36ServerImpl(), args);
   }
 }

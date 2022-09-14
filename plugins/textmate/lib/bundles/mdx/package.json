@@ -62,6 +62,7 @@
           "meta.embedded.block.powershell": "powershell",
           "meta.embedded.block.python": "python",
           "meta.embedded.block.rust": "rust",
+          "meta.embedded.block.rust": "raku",
           "meta.embedded.block.scala": "scala",
           "meta.embedded.block.shellscript": "shellscript",
           "meta.embedded.block.typescript": "typescript",
