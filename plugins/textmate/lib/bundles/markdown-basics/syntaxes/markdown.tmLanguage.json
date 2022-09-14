@@ -1247,10 +1247,10 @@
 				{
 					"begin": "(^|\\G)(\\s*)(.*)",
 					"while": "(^|\\G)(?!\\s*([`~]{3,})\\s*$)",
-					"contentName": "meta.embedded.block.perl6",
+					"contentName": "meta.embedded.block.raku",
 					"patterns": [
 						{
-							"include": "source.perl.6"
+							"include": "source.raku"
 						}
 					]
 				}

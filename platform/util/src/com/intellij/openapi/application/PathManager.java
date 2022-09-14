@@ -911,6 +911,9 @@ public final class PathManager {
     if (SystemInfoRt.isWindows) {
       String dir = System.getenv(winVar);
       if (dir == null || dir.isEmpty()) dir = userHome + "\\AppData\\" + (winVar.startsWith("LOCAL") ? "Local" : "Roaming");
+      if (vendorName.startsWith("\"")) {
+        vendorName = vendorName.substring(1, vendorName.length() - 1);
+      }
       dir = dir + '\\' + vendorName;
       if (!selector.isEmpty()) dir = dir + '\\' + selector;
       if (!winSub.isEmpty()) dir = dir + '\\' + winSub;

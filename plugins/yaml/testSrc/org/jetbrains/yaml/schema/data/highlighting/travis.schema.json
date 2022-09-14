@@ -168,7 +168,7 @@
             "objective-c",
             "objective_c",
             "perl",
-            "perl6",
+            "raku",
             "php",
             "python",
             "r",
@@ -222,7 +222,7 @@
             "type": "string"
           }
         },
-        "perl6": {
+        "raku": {
           "type": "array",
           "items": {
             "type": "string"

@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="launcher-generator:jar">
+    <output-path>$PROJECT_DIR$/build/lib</output-path>
+    <root id="archive" name="launcher-generator.jar">
+      <element id="module-output" name="launcher-generator" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/tools/launcher-generator/src/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>

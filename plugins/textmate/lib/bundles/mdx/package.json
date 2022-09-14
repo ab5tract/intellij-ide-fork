@@ -233,6 +233,7 @@
           "meta.embedded.php": "php",
           "meta.embedded.python": "python",
           "meta.embedded.r": "r",
+          "meta.embedded.raku": "raku",
           "meta.embedded.ruby": "ruby",
           "meta.embedded.rust": "rust",
           "meta.embedded.scss": "scss",

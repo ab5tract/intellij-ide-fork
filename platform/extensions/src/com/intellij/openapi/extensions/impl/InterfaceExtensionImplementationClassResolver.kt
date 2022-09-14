@@ -33,7 +33,8 @@ internal object InterfaceExtensionImplementationClassResolver : ImplementationCl
           idString != "com.intellij.kotlin.frontend" &&
           idString != "org.jetbrains.android" &&
           idString != "com.intellij.kotlinNative.platformDeps" &&
-          idString != "com.jetbrains.rider.android") {
+          idString != "com.jetbrains.rider.android" &&
+          idString != "edument.raku-idea-plugin") {
         logger<ExtensionPointImpl<*>>().error(componentManager.createError("""Created extension classloader is not equal to plugin's one.
 See https://youtrack.jetbrains.com/articles/IDEA-A-65/Plugin-Model#internalignoredependencyviolation
 (

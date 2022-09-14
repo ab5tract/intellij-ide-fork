@@ -16,7 +16,7 @@ public final class UnindexedFilesUpdater {
 
   private static final int DEFAULT_MAX_INDEXER_THREADS = 4;
   /** Defines number of indexing threads. -1 means autoconfigured value (see getNumberOfIndexingThreads/getMaxNumberOfIndexingThreads for algo). */
-  private static final int INDEXER_THREAD_COUNT = getIntProperty("caches.indexerThreadsCount", -1);
+  private static final int INDEXER_THREAD_COUNT = getIntProperty("caches.indexerThreadsCount", 2);
   /**
    * Count CPU# with or without hyper-threading:
    * if true:  assume # cores reported is # physical cores x2, so /2 to get physical cores count

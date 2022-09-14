@@ -150,7 +150,7 @@ public final class CreateDesktopEntryAction extends DumbAwareAction implements A
       }
     }
     else {
-      exec(new GeneralCommandLine("xdg-desktop-menu", "install", "--mode", "user", entryFile.toString()), null);
+      exec(new GeneralCommandLine("xdg-desktop-menu", "install", "--novendor", "--mode", "user", entryFile.toString()), null);
       exec(new GeneralCommandLine("xdg-desktop-menu", "forceupdate", "--mode", "user"), null);
     }
   }
