@@ -331,3 +331,7 @@ private fun getSourceRootsWithPrefixes(module: JpsModule): Sequence<Pair<Path, S
       Pair(Path.of(JpsPathUtil.urlToPath(moduleSourceRoot.url)), prefix.trimStart('/'))
     }
 }
+
+private fun readSnapshotBuildNumber(communityHome: BuildDependenciesCommunityRoot): String {
+  return Files.readString(communityHome.communityRoot.resolve("build.txt")).trim { it <= ' ' }
+}
