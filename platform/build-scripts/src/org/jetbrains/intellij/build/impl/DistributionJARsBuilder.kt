@@ -737,7 +737,7 @@ private fun containsFileInOutput(moduleName: String,
 }
 
 fun getPluginAutoUploadFile(communityRoot: BuildDependenciesCommunityRoot): Path {
-  val autoUploadFile = communityRoot.communityRoot.resolve("../build/plugins-autoupload.txt")
+  val autoUploadFile = communityRoot.communityRoot.resolve("plugins-autoupload.txt")
   require(Files.isRegularFile(autoUploadFile)) {
     "File '$autoUploadFile' must exist"
   }
