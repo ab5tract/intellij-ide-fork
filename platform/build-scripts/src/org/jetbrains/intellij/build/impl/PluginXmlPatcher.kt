@@ -58,12 +58,7 @@ internal fun patchPluginXml(moduleOutputPatcher: ModuleOutputPatcher,
     else -> CompatibleBuildRange.NEWER_WITH_SAME_BASELINE
   }
 
-  val defaultPluginVersion = if (context.buildNumber.endsWith(".SNAPSHOT")) {
-    "${context.buildNumber}.${pluginDateFormat.format(ZonedDateTime.now())}"
-  }
-  else {
-    context.buildNumber
-  }
+  val defaultPluginVersion = context.applicationInfo.fullVersion
 
   val pluginVersion = plugin.versionEvaluator.evaluate(pluginXmlFile, defaultPluginVersion, context)
   val sinceUntil = getCompatiblePlatformVersionRange(compatibleBuildRange, context.buildNumber)

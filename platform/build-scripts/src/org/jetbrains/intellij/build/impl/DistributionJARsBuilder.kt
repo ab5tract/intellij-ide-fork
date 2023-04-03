@@ -369,12 +369,7 @@ class DistributionJARsBuilder {
         val stageDir = context.paths.tempDir.resolve("non-bundled-plugins-${context.applicationInfo.productCode}")
         NioFiles.deleteRecursively(stageDir)
         val dirToJar = ConcurrentLinkedQueue<Pair<Path, Path>>()
-        val defaultPluginVersion = if (context.buildNumber.endsWith(".SNAPSHOT")) {
-          "${context.buildNumber}.${pluginDateFormat.format(ZonedDateTime.now())}"
-        }
-        else {
-          context.buildNumber
-        }
+        val defaultPluginVersion = context.applicationInfo.fullVersion
 
         // buildPlugins pluginBuilt listener is called concurrently
         val pluginsToIncludeInCustomRepository = ConcurrentLinkedQueue<PluginRepositorySpec>()
@@ -391,12 +386,7 @@ class DistributionJARsBuilder {
           val targetDirectory = if (autoPublishPluginChecker.test(plugin)) autoUploadingDir else nonBundledPluginsArtifacts
           val moduleOutput = context.getModuleOutputDir(context.findRequiredModule(plugin.mainModule))
           val pluginXmlPath = moduleOutput.resolve("META-INF/plugin.xml")
-          val pluginVersion = if (Files.exists(pluginXmlPath)) {
-            plugin.versionEvaluator.evaluate(pluginXmlPath, defaultPluginVersion, context)
-          }
-          else {
-            defaultPluginVersion
-          }
+          val pluginVersion = defaultPluginVersion
           val destFile = targetDirectory.resolve("${plugin.directoryName}-$pluginVersion.zip")
           if (prepareCustomPluginRepositoryForPublishedPlugins) {
             val pluginXml = moduleOutputPatcher.getPatchedPluginXml(plugin.mainModule)
