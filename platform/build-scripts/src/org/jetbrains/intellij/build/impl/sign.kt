@@ -66,8 +66,8 @@ internal fun signMacApp(
   artifactDir: Path,
   dmgImage: Path?,
   artifactBuilt: Consumer<Path>,
-  publishAppArchive: Boolean,
-  jetSignClient: Path
+  publishAppArchive: Boolean
+  //jetSignClient: Path
 ) {
   executeTask(host, user, password, "/Users/koto/ftp-uploads/intellij-builds/${fullBuildNumber}") { ssh, sftp, remoteDir ->
     spanBuilder("upload file")
@@ -92,7 +92,7 @@ internal fun signMacApp(
         if (dmgImage != null) {
           sftp.put(NioFileSource(dmgImage, filePermission = regularFileMode), "$remoteDir/$fullBuildNumber.png")
         }
-        sftp.put(NioFileSource(jetSignClient, filePermission = executableFileMode), "$remoteDir/${jetSignClient.name}")
+        //sftp.put(NioFileSource(jetSignClient, filePermission = executableFileMode), "$remoteDir/${jetSignClient.name}")
       }
 
     val args = listOf(
@@ -104,7 +104,7 @@ internal fun signMacApp(
       if (notarize) "yes" else "no",
       bundleIdentifier,
       publishAppArchive.toString(),
-      "/Users/$user/$remoteDir/${jetSignClient.name}"
+      //"/Users/$user/$remoteDir/${jetSignClient.name}"
     )
 
     val env = sequenceOf("ARTIFACTORY_URL", "SERVICE_ACCOUNT_NAME", "SERVICE_ACCOUNT_TOKEN")

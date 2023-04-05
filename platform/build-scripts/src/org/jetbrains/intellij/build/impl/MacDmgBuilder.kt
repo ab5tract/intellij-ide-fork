@@ -116,10 +116,10 @@ private fun buildAndSignWithMacBuilderHost(sitFile: Path,
   else {
     Path.of((if (context.applicationInfo.isEAP) customizer.dmgImagePathForEAP else null) ?: customizer.dmgImagePath)
   }
-  val jetSignClient = context.proprietaryBuildTools.signTool?.commandLineClient(context, OsFamily.MACOS, macHostProperties.architecture)
-  check(jetSignClient != null) {
-    "JetSign client is missing, cannot proceed with signing"
-  }
+  //val jetSignClient = context.proprietaryBuildTools.signTool?.commandLineClient(context, OsFamily.MACOS, macHostProperties.architecture)
+  //check(jetSignClient != null) {
+  //  "JetSign client is missing, cannot proceed with signing"
+  //}
   signMacApp(
     host = macHostProperties.host!!,
     user = macHostProperties.userName!!,
@@ -131,8 +131,8 @@ private fun buildAndSignWithMacBuilderHost(sitFile: Path,
     artifactDir = Path.of(context.paths.artifacts),
     dmgImage = dmgImage,
     artifactBuilt = context::notifyArtifactWasBuilt,
-    publishAppArchive = context.publishSitArchive,
-    jetSignClient = jetSignClient
+    publishAppArchive = context.publishSitArchive
+    //jetSignClient = jetSignClient
   )
 }
 
