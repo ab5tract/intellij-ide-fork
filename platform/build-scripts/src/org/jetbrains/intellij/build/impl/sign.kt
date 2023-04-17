@@ -104,7 +104,7 @@ internal fun signMacApp(
       if (notarize) "yes" else "no",
       bundleIdentifier,
       publishAppArchive.toString(),
-      //"/Users/$user/$remoteDir/${jetSignClient.name}"
+      "true"
     )
 
     val env = sequenceOf("ARTIFACTORY_URL", "SERVICE_ACCOUNT_NAME", "SERVICE_ACCOUNT_TOKEN")
