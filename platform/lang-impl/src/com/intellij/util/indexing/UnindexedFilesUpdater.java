@@ -26,7 +26,7 @@ public class UnindexedFilesUpdater {
     SystemProperties.getBooleanProperty("idea.indexing.use.conservative.thread.count.policy", false);
   private static final int DEFAULT_MAX_INDEXER_THREADS = 4;
   // Allows to specify number of indexing threads. -1 means the default value (currently, 4).
-  private static final int INDEXER_THREAD_COUNT = SystemProperties.getIntProperty("caches.indexerThreadsCount", -1);
+  private static final int INDEXER_THREAD_COUNT = SystemProperties.getIntProperty("caches.indexerThreadsCount", 2);
 
   public static final ExecutorService GLOBAL_INDEXING_EXECUTOR = AppExecutorUtil.createBoundedApplicationPoolExecutor(
     "Indexing", getMaxNumberOfIndexingThreads()
