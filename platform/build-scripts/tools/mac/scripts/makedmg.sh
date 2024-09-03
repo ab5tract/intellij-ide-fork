@@ -101,7 +101,7 @@ rm "/Volumes/$1/DSStorePlaceHolder"
 if ! python3 --version >/dev/null 2>/dev/null; then
   log "python3 is required for DMG/DS_Store generation"
   exit 1
-elif ! python3 -c "import ds_store; import mac_alias;" >/dev/null 2>/dev/null; then
+elif ! python -c "import ds_store; import mac_alias;" >/dev/null 2>/dev/null; then
   log "ds_store library is required for DMG/DS_Store generation, installing"
   pip3 install ds_store --user
 fi

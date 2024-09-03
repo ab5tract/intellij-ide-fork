@@ -364,10 +364,10 @@
       <module fileurl="file://$PROJECT_DIR$/android/android/prebuilts/sdktools/android.sdktools.wizardTemplate.impl.iml" filepath="$PROJECT_DIR$/android/android/prebuilts/sdktools/android.sdktools.wizardTemplate.impl.iml" />
       <module fileurl="file://$PROJECT_DIR$/android/android/prebuilts/sdktools/android.sdktools.wizardTemplate.plugin.iml" filepath="$PROJECT_DIR$/android/android/prebuilts/sdktools/android.sdktools.wizardTemplate.plugin.iml" />
       <module fileurl="file://$PROJECT_DIR$/android/android/prebuilts/sdktools/android.sdktools.zipflinger.iml" filepath="$PROJECT_DIR$/android/android/prebuilts/sdktools/android.sdktools.zipflinger.iml" />
-      <module fileurl="file://$PROJECT_DIR$/comma-build/build/edument.perl6.comma.build.iml" filepath="$PROJECT_DIR$/comma-build/build/edument.perl6.comma.build.iml" />
-      <module fileurl="file://$PROJECT_DIR$/comma-build/community/edument.perl6.comma.community.iml" filepath="$PROJECT_DIR$/comma-build/community/edument.perl6.comma.community.iml" />
-      <module fileurl="file://$PROJECT_DIR$/comma-build/complete/edument.perl6.comma.complete.iml" filepath="$PROJECT_DIR$/comma-build/complete/edument.perl6.comma.complete.iml" />
-      <module fileurl="file://$PROJECT_DIR$/comma-build/perl6-idea-plugin/edument.perl6.plugin.iml" filepath="$PROJECT_DIR$/comma-build/perl6-idea-plugin/edument.perl6.plugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/comma-build/build/edument.raku.comma.build.iml" filepath="$PROJECT_DIR$/comma-build/build/edument.raku.comma.build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/comma-build/community/edument.raku.comma.community.iml" filepath="$PROJECT_DIR$/comma-build/community/edument.raku.comma.community.iml" />
+      <module fileurl="file://$PROJECT_DIR$/comma-build/complete/edument.raku.comma.complete.iml" filepath="$PROJECT_DIR$/comma-build/complete/edument.raku.comma.complete.iml" />
+      <module fileurl="file://$PROJECT_DIR$/comma-build/raku-idea-plugin/edument.raku.plugin.iml" filepath="$PROJECT_DIR$/comma-build/raku-idea-plugin/edument.raku.plugin.iml" />
       <module fileurl="file://$PROJECT_DIR$/android/android-adb/intellij.android.adb.iml" filepath="$PROJECT_DIR$/android/android-adb/intellij.android.adb.iml" />
       <module fileurl="file://$PROJECT_DIR$/android/android-adb/intellij.android.adb.tests.iml" filepath="$PROJECT_DIR$/android/android-adb/intellij.android.adb.tests.iml" />
       <module fileurl="file://$PROJECT_DIR$/android/android-adb-ui/intellij.android.adb.ui.iml" filepath="$PROJECT_DIR$/android/android-adb-ui/intellij.android.adb.ui.iml" />
