@@ -48259,7 +48259,7 @@ perl-depends
 perl-doc-html
 perl-stacktrace
 perl-tk
-perl6
+raku
 perlbal
 perlbrew
 perlconsole
