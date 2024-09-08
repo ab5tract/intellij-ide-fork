@@ -435,28 +435,3 @@ private fun createBuildOutputRootEvaluator(projectHome: Path, productProperties:
     projectHome.resolve("out/${productProperties.getOutputDirectoryName(appInfo)}")
   }
 }
-
-private fun getSourceRootsWithPrefixes(module: JpsModule): Sequence<Pair<Path, String>> {
-  return module.sourceRoots.asSequence()
-    .filter { root: JpsModuleSourceRoot ->
-      JavaModuleSourceRootTypes.PRODUCTION.contains(root.rootType)
-    }
-    .map { moduleSourceRoot: JpsModuleSourceRoot ->
-      var prefix: String
-      val properties = moduleSourceRoot.properties
-      prefix = if (properties is JavaSourceRootProperties) {
-        properties.packagePrefix.replace(".", "/")
-      }
-      else {
-        (properties as JavaResourceRootProperties).relativeOutputPath
-      }
-      if (!prefix.endsWith("/")) {
-        prefix += "/"
-      }
-      Pair(Path.of(JpsPathUtil.urlToPath(moduleSourceRoot.url)), prefix.trimStart('/'))
-    }
-}
-
-private fun readSnapshotBuildNumber(communityHome: BuildDependenciesCommunityRoot): String {
-  return Files.readString(communityHome.communityRoot.resolve("build.txt")).trim { it <= ' ' }
-}

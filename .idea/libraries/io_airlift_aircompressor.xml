@@ -1,6 +1,12 @@
 <component name="libraryTable">
   <library name="io.airlift.aircompressor" type="repository">
-    <properties maven-id="io.airlift:aircompressor:0.21" />
+    <properties maven-id="io.airlift:aircompressor:0.21">
+      <verification>
+        <artifact url="file://$MAVEN_REPOSITORY$/io/airlift/aircompressor/0.21/aircompressor-0.21.jar">
+          <sha256sum>e968bd7f31641ae94ea4ae12971337bdfab794349cc0baa9ccd54553cce712ac</sha256sum>
+        </artifact>
+      </verification>
+    </properties>
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/io/airlift/aircompressor/0.21/aircompressor-0.21.jar!/" />
     </CLASSES>
