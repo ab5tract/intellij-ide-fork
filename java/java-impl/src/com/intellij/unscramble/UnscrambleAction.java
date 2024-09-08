@@ -15,7 +15,6 @@
  */
 package com.intellij.unscramble;
 
-import com.intellij.diagnostic.IdeErrorsDialog;
 import com.intellij.java.JavaBundle;
 import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;

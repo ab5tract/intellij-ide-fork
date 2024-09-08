@@ -334,3 +334,4 @@ private fun getSourceRootsWithPrefixes(module: JpsModule): Sequence<Pair<Path, S
 internal fun readSnapshotBuildNumber(communityHome: BuildDependenciesCommunityRoot): String {
   return Files.readString(communityHome.communityRoot.resolve("build.txt")).trim { it <= ' ' }
 }
+
