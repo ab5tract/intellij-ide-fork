@@ -59,37 +59,19 @@ internal suspend fun patchPluginXml(
     else -> CompatibleBuildRange.NEWER_WITH_SAME_BASELINE
   }
 
-//  val pluginVersion = plugin.versionEvaluator.evaluate(pluginXmlSupplier = { descriptorContent }, ideBuildVersion = context.pluginBuildNumber, context = context)
-//  @Suppress("TestOnlyProblems")
-//  val content = try {
-//    val element = doPatchPluginXml(
-//      rootElement = JDOMUtil.load(descriptorContent),
-//      pluginModuleName = plugin.mainModule,
-//      pluginVersion = pluginVersion.pluginVersion,
-//      releaseDate = releaseDate,
-//      releaseVersion = releaseVersion,
-//      compatibleSinceUntil = pluginVersion.sinceUntil ?: getCompatiblePlatformVersionRange(compatibleBuildRange, context.buildNumber),
-//      toPublish = pluginsToPublish.contains(plugin),
-//      retainProductDescriptorForBundledPlugin = plugin.retainProductDescriptorForBundledPlugin,
-//      isEap = context.applicationInfo.isEAP,
-  val defaultPluginVersion = context.applicationInfo.fullVersion
-
-  val pluginVersion = plugin.versionEvaluator.evaluate(pluginXmlFile, defaultPluginVersion, context)
-  val sinceUntil = getCompatiblePlatformVersionRange(compatibleBuildRange, context.buildNumber)
-  @Suppress("TestOnlyProblems") val content = try {
-    plugin.pluginXmlPatcher(
-      // using input stream allows us to support BOM
-      doPatchPluginXml(document = Files.newInputStream(pluginXmlFile).use { XMLParser().parse(XMLIOSource(it)) },
-                       pluginModuleName = plugin.mainModule,
-                       pluginVersion = pluginVersion,
-                       releaseDate = releaseDate,
-                       releaseVersion = releaseVersion,
-                       compatibleSinceUntil = sinceUntil,
-                       toPublish = pluginsToPublish.contains(plugin),
-                       retainProductDescriptorForBundledPlugin = plugin.retainProductDescriptorForBundledPlugin,
-                       isEap = context.applicationInfo.isEAP,
-                       productName = context.applicationInfo.productName),
-      context,
+  val pluginVersion = plugin.versionEvaluator.evaluate(pluginXmlSupplier = { descriptorContent }, ideBuildVersion = context.pluginBuildNumber, context = context)
+  @Suppress("TestOnlyProblems")
+  val content = try {
+    val element = doPatchPluginXml(
+      rootElement = JDOMUtil.load(descriptorContent),
+      pluginModuleName = plugin.mainModule,
+      pluginVersion = pluginVersion.pluginVersion,
+      releaseDate = releaseDate,
+      releaseVersion = releaseVersion,
+      compatibleSinceUntil = pluginVersion.sinceUntil ?: getCompatiblePlatformVersionRange(compatibleBuildRange, context.buildNumber),
+      toPublish = pluginsToPublish.contains(plugin),
+      retainProductDescriptorForBundledPlugin = plugin.retainProductDescriptorForBundledPlugin,
+      isEap = context.applicationInfo.isEAP,
     )
 
     embedContentModules(

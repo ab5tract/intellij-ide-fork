@@ -132,73 +132,12 @@ internal suspend fun buildDistribution(
         context.notifyArtifactBuilt(contentReportFile)
       }
     }
-//    createBuildThirdPartyLibraryListJob(contentReport.bundled(), context)
-//    if (context.useModularLoader || context.generateRuntimeModuleRepository) {
-//      launch(Dispatchers.IO) {
-//        spanBuilder("generate runtime module repository").use {
-//          generateRuntimeModuleRepository(contentReport.bundled(), context)
-//        }
-
-      val nonBundledPluginsArtifacts = context.paths.artifactDir.resolve("${context.applicationInfo.productCode}-plugins")
-      val autoUploadingDir = nonBundledPluginsArtifacts.resolve("auto-uploading")
-      coroutineScope {
-        val buildKeymapPluginsTask = async { buildKeymapPlugins(autoUploadingDir, context) }
-        val moduleOutputPatcher = ModuleOutputPatcher()
-        val stageDir = context.paths.tempDir.resolve("non-bundled-plugins-${context.applicationInfo.productCode}")
-        NioFiles.deleteRecursively(stageDir)
-        val dirToJar = ConcurrentLinkedQueue<Pair<Path, Path>>()
-        val defaultPluginVersion = context.applicationInfo.fullVersion
-
-        // buildPlugins pluginBuilt listener is called concurrently
-        val pluginsToIncludeInCustomRepository = ConcurrentLinkedQueue<PluginRepositorySpec>()
-        val autoPublishPluginChecker = loadPluginAutoPublishList(context)
-        val prepareCustomPluginRepositoryForPublishedPlugins = context.productProperties.productLayout.prepareCustomPluginRepositoryForPublishedPlugins
-        // we don't simplify layout for non-bundled plugins, because PluginInstaller not ready for this (see rootEntryName)
-        val mappings = buildPlugins(moduleOutputPatcher = moduleOutputPatcher,
-                                    plugins = pluginsToPublish.sortedWith(PLUGIN_LAYOUT_COMPARATOR_BY_MAIN_MODULE),
-                                    targetDir = stageDir,
-                                    state = state,
-                                    context = context,
-                                    simplify = false,
-                                    buildPlatformJob = buildPlatformLibJob) { plugin, pluginDirOrFile ->
-          val targetDirectory = if (autoPublishPluginChecker.test(plugin)) autoUploadingDir else nonBundledPluginsArtifacts
-          val moduleOutput = context.getModuleOutputDir(context.findRequiredModule(plugin.mainModule))
-          val pluginXmlPath = moduleOutput.resolve("META-INF/plugin.xml")
-          val pluginVersion = defaultPluginVersion
-          val destFile = targetDirectory.resolve("${plugin.directoryName}-$pluginVersion.zip")
-          if (prepareCustomPluginRepositoryForPublishedPlugins) {
-            val pluginXml = moduleOutputPatcher.getPatchedPluginXml(plugin.mainModule)
-            pluginsToIncludeInCustomRepository.add(PluginRepositorySpec(destFile, pluginXml))
-          }
-          dirToJar.add(pluginDirOrFile to destFile)
+    createBuildThirdPartyLibraryListJob(contentReport.bundled(), context)
+    if (context.useModularLoader || context.generateRuntimeModuleRepository) {
+      launch(Dispatchers.IO) {
+        spanBuilder("generate runtime module repository").use {
+          generateRuntimeModuleRepository(contentReport.bundled(), context)
         }
-
-        bulkZipWithPrefix(items = dirToJar, compress = compressPluginArchive, withBlockMap = compressPluginArchive)
-        val helpPlugin = buildHelpPlugin(pluginVersion = defaultPluginVersion, context = context)
-        if (helpPlugin != null) {
-          val spec = buildHelpPlugin(helpPlugin = helpPlugin,
-                                     pluginsToPublishDir = stageDir,
-                                     targetDir = autoUploadingDir,
-                                     moduleOutputPatcher = moduleOutputPatcher,
-                                     context = context)
-          if (prepareCustomPluginRepositoryForPublishedPlugins) {
-            pluginsToIncludeInCustomRepository.add(spec)
-          }
-        }
-
-        for (item in buildKeymapPluginsTask.await()) {
-          if (prepareCustomPluginRepositoryForPublishedPlugins) {
-            pluginsToIncludeInCustomRepository.add(PluginRepositorySpec(pluginZip = item.first, pluginXml = item.second))
-          }
-        }
-
-        if (prepareCustomPluginRepositoryForPublishedPlugins) {
-          val list = pluginsToIncludeInCustomRepository.sortedBy { it.pluginZip }
-          generatePluginRepositoryMetaFile(list, nonBundledPluginsArtifacts, context)
-          generatePluginRepositoryMetaFile(list.filter { it.pluginZip.startsWith(autoUploadingDir) }, autoUploadingDir, context)
-        }
-
-        mappings
       }
     }
   }
