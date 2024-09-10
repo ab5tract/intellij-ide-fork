@@ -180,33 +180,6 @@ internal suspend fun buildDistribution(state: DistributionBuilderState,
         spanBuilder("generate runtime module repository").useWithScope2 { 
           generateRuntimeModuleRepository(entries, context)
         }
-
-        bulkZipWithPrefix(items = dirToJar, compress = compressPluginArchive, withBlockMap = compressPluginArchive)
-        val helpPlugin = buildHelpPlugin(pluginVersion = defaultPluginVersion, context = context)
-        if (helpPlugin != null) {
-          val spec = buildHelpPlugin(helpPlugin = helpPlugin,
-                                     pluginsToPublishDir = stageDir,
-                                     targetDir = autoUploadingDir,
-                                     moduleOutputPatcher = moduleOutputPatcher,
-                                     context = context)
-          if (prepareCustomPluginRepositoryForPublishedPlugins) {
-            pluginsToIncludeInCustomRepository.add(spec)
-          }
-        }
-
-        for (item in buildKeymapPluginsTask.await()) {
-          if (prepareCustomPluginRepositoryForPublishedPlugins) {
-            pluginsToIncludeInCustomRepository.add(PluginRepositorySpec(pluginZip = item.first, pluginXml = item.second))
-          }
-        }
-
-        if (prepareCustomPluginRepositoryForPublishedPlugins) {
-          val list = pluginsToIncludeInCustomRepository.sortedBy { it.pluginZip }
-          generatePluginRepositoryMetaFile(list, nonBundledPluginsArtifacts, context)
-          generatePluginRepositoryMetaFile(list.filter { it.pluginZip.startsWith(autoUploadingDir) }, autoUploadingDir, context)
-        }
-
-        mappings
       }
     }
   }
